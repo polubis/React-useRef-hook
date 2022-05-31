@@ -1,8 +1,6 @@
 import { useRef, useState } from "react";
 
-const useForm = <V extends Record<string, any>>(
-  initValues: V,
-) => {
+const useForm = <V extends Record<string, any>>(initValues: V) => {
   // Only for re-render purposes.
   const [, setCounter] = useState(0);
 
@@ -18,28 +16,26 @@ const useForm = <V extends Record<string, any>>(
   };
 
   const data = {
-    values: values.current,
+    values: values.current
   };
 
   const handlers = {
-    update,
+    update
   };
 
   return [data, handlers] as const;
 };
 
 const Component = () => {
-    const [{ values }, { update }] = useForm({ username: '' })
+  const [{ values }, { update }] = useForm({ username: "" });
 
-    const handleChange = () => {
-      update('username', 'Example value');
+  const handleChange = () => {
+    update("username", "Example value");
 
-      // Already updated
-      // No need to wait for state update
-      console.log(values.username)
-    }
+    // Already updated
+    // No need to wait for state update
+    console.log(values.username);
+  };
 
-    return (
-      <input value={values.username} onChange={handleChange} />
-    )
-}   
+  return <input value={values.username} onChange={handleChange} />;
+};
