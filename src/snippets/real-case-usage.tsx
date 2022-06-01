@@ -7,6 +7,7 @@ const useForm = <V extends Record<string, any>>(initValues: V) => {
   const values = useRef(initValues);
 
   const rerender = () => {
+    // Incrementing value only for trigger rerender
     setCounter((prevCounter) => prevCounter + 1);
   };
 
@@ -15,19 +16,11 @@ const useForm = <V extends Record<string, any>>(initValues: V) => {
     rerender(); // Triggers rerender
   };
 
-  const data = {
-    values: values.current
-  };
-
-  const handlers = {
-    update
-  };
-
-  return [data, handlers] as const;
+  return [values.current, update] as const;
 };
 
 const Component = () => {
-  const [{ values }, { update }] = useForm({ username: "" });
+  const [values, update] = useForm({ username: "" });
 
   const handleChange = () => {
     update("username", "Example value");
