@@ -16,7 +16,6 @@ export const useUsersSearch = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   const setupUsers = () => {
-    f;
     setUsers(generateUsers());
   };
 
