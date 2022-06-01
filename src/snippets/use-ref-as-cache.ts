@@ -20,7 +20,7 @@ export const useUsersSearch = () => {
   };
 
   const search = (query: string) => {
-    // If query is in cache - return users array without search
+    // If query is in cache - return user array without search
     if (cache.current.hasOwnProperty(query)) {
       setUsers(cache.current[query]);
       return;

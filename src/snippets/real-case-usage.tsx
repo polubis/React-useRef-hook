@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
 const useForm = <V extends Record<string, any>>(initValues: V) => {
-  // Only for re-render purposes.
+  // Only for rerender purposes.
   const [, setCounter] = useState(0);
 
   const values = useRef(initValues);
