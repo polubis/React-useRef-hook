@@ -19,7 +19,7 @@ export const useUsersSearch = () => {
   };
 
   const search = (query: string) => {
-    // We need caching here
+    // You need caching here
     const regex = new RegExp(query, "i");
     setUsers((prevUsers) =>
       prevUsers.filter((user) => regex.test(user.username))
